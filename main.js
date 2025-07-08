@@ -1,3 +1,5 @@
+import { Synch_Board } from "./DOM.js";
+import { Init } from "./DOM.js";
 
 
 
@@ -379,11 +381,12 @@ function display() {
 
                     }
 
-                    console.log(taken)
+                    //console.log(taken)
 
                     i++
                 }
 
+                console.log(i)
 
             }while(i<5)
 
@@ -393,7 +396,7 @@ function display() {
     }
 
     let Computer = [] //coord played by computer to not duplicated
-
+    let computer_count = 0
     function Computer_turn(board1,b1){
 
 
@@ -413,7 +416,7 @@ function display() {
             Computer.push(div_index)
 
 
-        console.log(div_index)
+        
          
           if(turn=="grid_1"){
               const div = document.getElementById(div_index);
@@ -443,12 +446,19 @@ function display() {
             if ((board1[ligne][coloumn]) ==="....") {
 
                  div.style["backgroundColor"] = "grey";
+                 turn = "grid_2"
             }
             else{ //hitted
 
                 
                 div.style.backgroundColor = "red";
+                computer_count++
                 b1.receiveAttack(ligne+1,coloumn+1)
+
+                setTimeout(() => {
+                    Computer_turn(board1,b1)
+                }, 3000);
+
 
                             
 
@@ -456,25 +466,27 @@ function display() {
             
 
         }
-        turn = "grid_2"
+        
           }
         
     }
-
     
 
 let turn = "grid_2"; // état global
-
+let Player =[] //Player coord played , duplicate
+let count_player =0
 function Start_Listener(board1,board2,b1,b2) { //first 2 = board last 2 object
-    const grid1 = document.getElementById("grid_1");
+
+
     const grid2 = document.getElementById("grid_2");
 
 
 
     
     grid2.addEventListener("click", (e) => {
-        if (turn === "grid_2" && e.target.id !== "grid_2") {
+        if (turn === "grid_2" && e.target.id !== "grid_2"&&!Player.includes(e.target.id)) {
                         let div_index = e.target.id 
+                        Player.push(e.target.id)
 
             const div = document.getElementById(div_index);
 
@@ -503,31 +515,62 @@ function Start_Listener(board1,board2,b1,b2) { //first 2 = board last 2 object
             if ((board2[ligne][coloumn]) ==="....") {
 
                  div.style["backgroundColor"] = "grey";
+                 turn = "grid_1";
+
             }
             else{
 
                             div.style.backgroundColor = "red";
+                            count_player++
                             b2.receiveAttack(ligne+1,coloumn+1)
+                            turn = "grid_2";
+
 
 
             }
 
-            turn = "grid_1";
 
-            console.log("haha")
+
+            
+            if(count_player==17){
+
+
+                const span = document.querySelector(".P1")
+
+                span.style.display = "inline"
+
+        
+                turn = "end"
+            }
 
             Computer_turn(board1,b1)
+
+             if(computer_count==17){
+
+                 const span = document.querySelector(".P2")
+
+                span.style.display = "inline"
+
+
+                turn = "end"
+            }
+
 
              // changement de tour
         }
     });
+
+
+    
     
 }
 
 
 
+
     return{init,display,addShip,receiveAttack,gameOver,getBoard,Start_Listener,random}
 }
+
 
 
 export function player(){

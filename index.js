@@ -31,12 +31,8 @@ import { Synch_Board } from "./DOM.js";
     board1.init() //add divs for each grid
     board2.init()
 
-
-    board1.addShip(ship1,10,10,"top")
-    board1.addShip(ship2,1,1,"bottom")
-    board1.addShip(ship3,4,4,"bottom")
-    board1.addShip(ship4,6,7,"top")
-    board1.addShip(ship5,10,8,"left")
+    
+    board1.random(ship1,ship2,ship3,ship4,ship5,board1)
 
 
     board2.random(ship1,ship2,ship3,ship4,ship5,board2)

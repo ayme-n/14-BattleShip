@@ -53,7 +53,7 @@ export function Synch_Board(board,Player){
                 
                     div.style["backgroundColor"] ="black"
                  }
-
+                
             } 
         }
         
