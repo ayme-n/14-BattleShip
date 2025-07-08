@@ -1,0 +1,22 @@
+{
+  "name": "14-battleship",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  
+  
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ayme-n/14-BattleShip.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ayme-n/14-BattleShip/issues"
+  },
+  "homepage": "https://github.com/ayme-n/14-BattleShip#readme"
+}

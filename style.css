@@ -1,0 +1,48 @@
+
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Roboto;
+    box-sizing: border-box;
+}
+
+.container{
+     display: grid;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    grid-template-columns: repeat(2,0.4fr);
+}
+
+.grid{
+    display: grid;
+    border: black solid 1px;
+    grid-template-columns: repeat(10,1fr);
+    grid-template-rows: repeat(10,1fr);
+    gap:1fr;
+
+
+    width: 350px;
+    height: 350px;
+
+    justify-self: center;
+    align-self: center;
+}
+
+.grid div{
+    border: black solid 1px;
+}
+
+.grid_container{
+    
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+h3{
+    text-align: center;
+}
